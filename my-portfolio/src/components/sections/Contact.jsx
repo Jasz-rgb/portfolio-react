@@ -53,8 +53,69 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen flex flex-col md:flex-row items-center justify-center py-20 px-4 md:px-16 gap-10"
+      className="relative min-h-screen flex flex-col md:flex-row items-center justify-center py-20 px-4 md:px-16 gap-20"
     >
+      <div className="hidden md:flex flex-col items-start justify-center space-y-6 absolute left-45 top-1/2 -translate-y-1/2">
+        {/* GitHub */}
+        <a
+          href="https://github.com/Jasz-rgb"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-4"
+          style={{ animation: "float 3s ease-in-out infinite" }}
+        >
+          <img
+            src="github.png"
+            alt="GitHub"
+            className="w-16 h-16 hover:scale-110 transition-transform"
+          />
+          <span className="text-white font-medium text-lg">GitHub</span>
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href="https://www.linkedin.com/in/jasmine-sahoo-12aa3831b/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-4"
+          style={{ animation: "float 4s ease-in-out infinite" }}
+        >
+          <img
+            src="linkedin.png"
+            alt="LinkedIn"
+            className="w-16 h-16 hover:scale-110 transition-transform"
+          />
+          <span className="text-white font-medium text-lg">LinkedIn</span>
+        </a>
+
+        {/* Gmail */}
+        <a
+          href="mailto:jasminesahoo007@gmail.com"
+          className="flex items-center space-x-4"
+          style={{ animation: "float 2.5s ease-in-out infinite" }}
+        >
+          <img
+            src="gmail.png"
+            alt="Gmail"
+            className="w-16 h-16 hover:scale-110 transition-transform"
+          />
+          <span className="text-white font-medium text-lg">Gmail</span>
+        </a>
+
+        {/* Floating animation keyframes */}
+        <style>
+          {`
+        @keyframes float {
+            0%   { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            25%  { transform: translateY(-8px) translateX(5px) rotate(-2deg); }
+            50%  { transform: translateY(-12px) translateX(-5px) rotate(2deg); }
+            75%  { transform: translateY(-6px) translateX(3px) rotate(-1deg); }
+            100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+        }
+        `}
+        </style>
+      </div>
+
       {/* Left: Form */}
       <RevealOnScroll>
         {" "}
