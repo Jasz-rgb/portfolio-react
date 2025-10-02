@@ -82,23 +82,18 @@ export const About = () => {
             </div>
             <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-bold mb-4"> 💼 Work Experience </h3>
-              <div className="space-y-4 text-gray-300">
-                <div>
-                  <li className="font-semibold">
-                    {" "}
-                    Quant Trainee | Quant Club | IIT Kharagpur{" "}
-                  </li>
-                  <li className="font-semibold">
-                    {" "}
-                    Junior Member | Prodex | IIT Kharagpur{" "}
-                  </li>
-                  <li className="font-semibold">
-                    {" "}
-                    Senior Researcher & Graphic Designer | Computer Graphics
-                    Society | IIT Kharagpur{" "}
-                  </li>
-                </div>
-              </div>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                <li className="font-semibold">
+                  Associate Quant Researcher | Quant Club | IIT Kharagpur
+                </li>
+                <li className="font-semibold">
+                  Associate Member | Prodex | IIT Kharagpur
+                </li>
+                <li className="font-semibold">
+                  Senior Researcher & Graphic Designer | Computer Graphics
+                  Society | IIT Kharagpur
+                </li>
+              </ul>
             </div>
           </div>
         </div>

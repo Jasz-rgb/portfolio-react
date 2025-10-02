@@ -8,7 +8,7 @@ export const projects = [
     unbilled services, and underutilized inventory. 
     Proposed data-driven strategies including dynamic pricing, micro-moment bundling, 
     AI-based staffing, and real-time audit systems to reduce revenue leakage.`,
-    image: "/images/hospitality.png",
+    image: "/images/revenue.png",
     technologies: ["Python", "Pandas", "K-Means", "EDA", "Data Analytics"],
     buttons: [
       {
@@ -32,7 +32,7 @@ export const projects = [
     - Used systematic selection and dynamic allocation to optimize return-risk balance.
 
     Outcome: Validated the efficiency of Risk Parity and systematic rebalancing in portfolio management.`,
-    image: "/images/portfolio.png",
+    image: "/images/quant.png",
     technologies: ["Python", "Finance", "PyPortfolioOpt", "Backtesting"],
     buttons: [
       { label: "View Project", link: "https://github.com/Jasz-rgb/Quant.git" },
@@ -77,7 +77,6 @@ export const projects = [
     Responsibilities included embedded systems programming, hardware design, and user experience optimization.
 
     Outcome: Strengthened skills in embedded systems, hardware integration, and user-centered product design.`,
-    image: "/images/rfid.png",
     technologies: ["Embedded C", "RFID", "IoT", "Wearables"],
     buttons: [
       {
@@ -93,7 +92,7 @@ export const projects = [
     Included audio feature extraction, dimensionality reduction, and clustering algorithms to reveal genre patterns. 
 
     Outcome: Gained insights into music data and the effectiveness of clustering in genre classification.`,
-    image: "/images/song-clustering.png",
+    image: "/images/song.png",
     technologies: ["Python", "Scikit-learn", "TF-IDF", "Clustering"],
     buttons: [
       {
@@ -111,7 +110,7 @@ export const projects = [
     - Dense Reconstruction: Built a detailed 3D model using image rectification, disparity, and depth maps. 
 
     Outcome: Successfully produced a sparse 3D representation, deepening understanding of structure-from-motion and stereo vision.`,
-    image: "/images/temple.png",
+    image: "/images/sparse.png",
     technologies: ["Python", "OpenCV", "3D Vision", "SfM"],
     buttons: [
       {
@@ -147,7 +146,7 @@ export const projects = [
     Built using basic OpenCV functions for clarity and educational value. 
 
     Outcome: Enabled robust tracking of object movement in video, providing a foundation for further work in motion analysis and computer vision.`,
-    image: "/images/optical-flow.png",
+    image: "/images/man.png",
     technologies: ["Python", "OpenCV", "Computer Vision", "Optical Flow"],
     buttons: [
       {
