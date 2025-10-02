@@ -1,6 +1,20 @@
 import { RevealOnScroll } from "../RevealOnScroll.jsx";
+import { projects } from "./Project-info.jsx";
+import { ProjectCard } from "./ProjectCard.jsx";
+import { useState, useEffect } from "react";
 
 export const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Close modal on ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
   return (
     <section
       id="projects"
@@ -8,234 +22,66 @@ export const Projects = () => {
     >
       <RevealOnScroll>
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-indigo-500 to-blue-400 bg-clip-text text-transparent text-center">
-            {" "}
+          {/* Section Title */}
+          <h2 className="text-3xl font-bold mb-12 bg-gradient-to-r from-indigo-500 to-blue-400 bg-clip-text text-transparent text-center">
             Featured Projects
           </h2>
+
+          {/* Project Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-2">
-                {" "}
-                Portfolio Optimization and Backtesting
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Developed and backtested a $10,000 equity portfolio using Stock
-                indicators, Alpha Vantage API, and applied Risk Parity
-                Optimization method over 2 years period.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["Python Libraries", "Alpha Vantage API"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="bg-indigo-500/10 text-indigo-500 py-1 px-3 rounded-full text-sm hover:bg-indigo-500/20 
-                                    hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition cursor-pointer bg-gradient-to-br from-slate-900/30 to-slate-800/10"
+                onClick={() => setSelectedProject(project)}
+              >
+                <h3 className="text-xl font-bold mb-2 text-white/90">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 mb-4">
+                  {project.description.length > 100
+                    ? project.description.substring(0, 100) + "..."
+                    : project.description}
+                </p>
 
-              <div className="flex justify-between items-center">
-                <a
-                  href="#"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
-            <div
-              className="
-              glass p-6 rounded-xl border border-white/10 
-              hover:-translate-y-1 hover:border-indigo-500/30
-              hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all
-            "
-            >
-              <h3 className="text-xl font-bold mb-2">
-                OpenGL 3D Scene with ImGui Interface
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Created a modern, user-interactive OpenGL 3D setup featuring
-                Blender-imported models and Blinn-Phong lighting. Integrated
-                ImGui for real-time tweaking of parameters.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["C", "GLSL", "ImGui", "Blender"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="
-                      bg-indigo-500/10 text-indigo-500 py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-indigo-500/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)]
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex justify-between items-center">
-                <a
-                  href="#"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
-
-            <div
-              className="
-              glass p-6 rounded-xl border border-white/10 
-              hover:-translate-y-1 hover:border-indigo-500/30
-              hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all
-            "
-            >
-              <h3 className="text-xl font-bold mb-2">
-                Song Genre Clustering using BoW & TF-IDF
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Clustered songs by genre using unsupervised learning with
-                TF-IDF, PCA, and K-Means in Python.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["Jupyter Notebook", "Python", "ML"].map(
-                  (tech) => (
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies?.map((tech, key) => (
                     <span
-                      key={tech}
-                      className="
-                      bg-indigo-500/10 text-indigo-500 py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-indigo-500/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)]
-                    "
+                      key={key}
+                      className="bg-indigo-500/10 text-indigo-400 py-1 px-3 rounded-full text-sm hover:bg-indigo-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all"
                     >
                       {tech}
                     </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-between items-center">
-                <a
-                  href="#"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
+                  ))}
+                </div>
 
-            <div
-              className="
-              glass p-6 rounded-xl border border-white/10 
-              hover:-translate-y-1 hover:border-indigo-500/30
-              hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]
-              transition-all
-            "
-            >
-              <h3 className="text-xl font-bold mb-2">
-                Revenue Leakage in Indian Hospitality Industry
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Uncovered ₹30 Cr revenue loss across 1.3L+ hotel bookings (25
-                hotels) through in-depth analytics. Applied K-Means clustering,
-                EDA, and platform/city-wise analysis.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["Python Libraries"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="
-                      bg-indigo-500/10 text-indigo-500 py-1 px-3 
-                      rounded-full text-sm
-                      transition
-                      hover:bg-indigo-500/20 hover:-translate-y-0.5
-                      hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)]
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex justify-between items-center ">
-                <a
-                  href="#"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors my-4"
-                >
+                <div className="text-indigo-400 hover:text-indigo-300 transition-colors font-medium">
                   View Project →
-                </a>
+                </div>
               </div>
-            </div>
-            <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-2">
-                {" "}
-                3D Reconstruction of a Temple
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Created a sparse and dense 3D model from 2D images using OpenCV
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["Python", "OpenCV"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="bg-indigo-500/10 text-indigo-500 py-1 px-3 rounded-full text-sm hover:bg-indigo-500/20 
-                                    hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex justify-between items-center">
-                <a
-                  href="#"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
-            <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-indigo-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-2">
-                {" "}
-                2048 Game Solver | Self Project
-              </h3>
-              <p className="text-gray-400 mb-4">
-                Developed an AI solver for the 2048 game using efficient
-                algorithms like Expectimax and Expectiminimax using various
-                heuristics and parameters on both command-line and Pygame.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {["PyGame", "Python"].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="bg-indigo-500/10 text-indigo-500 py-1 px-3 rounded-full text-sm hover:bg-indigo-500/20 
-                                    hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all
-                    "
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex justify-between items-center">
-                <a
-                  href="#"
-                  className="text-indigo-400 hover:text-indigo-300 transition-colors my-4"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </RevealOnScroll>
+
+      {/* Modal */}
+      {selectedProject && (
+        <div
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center animate-fadeIn"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="w-full max-w-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ProjectCard
+              project={selectedProject}
+              onClose={() => setSelectedProject(null)}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
