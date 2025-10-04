@@ -65,7 +65,7 @@ export const Contact = () => {
           style={{ animation: "float 3s ease-in-out infinite" }}
         >
           <img
-            src="github.png"
+            src="/images/github.png"
             alt="GitHub"
             className="w-16 h-16 hover:scale-110 transition-transform"
           />
@@ -81,7 +81,7 @@ export const Contact = () => {
           style={{ animation: "float 4s ease-in-out infinite" }}
         >
           <img
-            src="linkedin.png"
+            src="/images/linkedin.png"
             alt="LinkedIn"
             className="w-16 h-16 hover:scale-110 transition-transform"
           />
@@ -95,7 +95,7 @@ export const Contact = () => {
           style={{ animation: "float 2.5s ease-in-out infinite" }}
         >
           <img
-            src="gmail.png"
+            src="/images/gmail.png"
             alt="Gmail"
             className="w-16 h-16 hover:scale-110 transition-transform"
           />
